@@ -1,0 +1,12 @@
+
+// SIZE
+$card_w: 750;
+$card_h: 1050;
+
+
+// ANIMATION
+$appear-animation-duration: 2s;
+
+//$animation-func: cubic-bezier(0.215, 0.610, 0.355, 1.000); // ease-out-cubic
+$animation-func: cubic-bezier(0.230, 1.000, 0.320, 1.000); // ease-out-quint
+//$animation-func: cubic-bezier(0.165, 0.840, 0.440, 1.000); // ease-out-quart

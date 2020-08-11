@@ -1,0 +1,60 @@
+@import "../deps";
+
+
+.btn {
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+  outline: none;
+  box-sizing: border-box;
+  max-width: 100%;
+  padding: 15px 25px;
+  z-index: 1;
+  color: $white;
+  border-radius: 6px;
+  border: 0;
+  font-weight: bold;
+  font-size: rem(20);
+  -webkit-user-drag: none;
+  -webkit-app-region: no-drag;
+  text-transform: uppercase;
+  transition: background-color .1s ease-out;
+
+  &:hover:not(:disabled) {
+    cursor: pointer;
+  }
+
+  &:before {
+    content: "";
+    position: absolute;
+    width: 0;
+    padding-bottom: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    transition: width .1s ease;
+  }
+
+  &:active, &:disabled {
+    &:before {
+      width: 140%;
+    }
+  }
+
+  .btn-text {
+    position: relative;
+  }
+
+  // color
+  &.btn-green {
+    background-color: $green;
+
+    &:before {
+      background-color: darken($green, 20%);
+    }
+    &:hover {
+      background: lighten($green, 10%);
+    }
+  }
+}

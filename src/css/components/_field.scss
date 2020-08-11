@@ -1,0 +1,126 @@
+@import "../deps";
+
+
+@keyframes fadeout {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+
+// стандартные стили полей в форме
+.field {
+  position: relative;
+  margin-bottom: $field_space;
+  max-width: 100%;
+  width: 100%;
+  box-sizing: border-box;
+  @include for-phone-only() {
+    margin-bottom: $field_space_mobile;
+  }
+
+  &:nth-last-of-type(1) {
+    margin-bottom: 0;
+  }
+
+  .control {
+    max-width: 100%;
+    box-sizing: border-box;
+    font-size: rem(16);
+    @include for-phone-only() {
+      width: 100%; // fix old safari
+    }
+    @include for-tablet-portrait-up() {
+      display: flex;
+      align-items: center;
+    }
+
+    input {
+      padding: 10px 20px;
+      width: 100%;
+      box-sizing: border-box;
+      border-radius: 5px;
+      color: $input_color;
+      background-color: $input_bg_color;
+      transition: background-color 0.2s ease-in-out, border 0.2s ease-in-out;
+      border: 1px solid $border_color;
+      outline: none;
+
+      @include placeholder {
+        color: $placeholder_color;
+        text-transform: uppercase;
+        opacity: 1;
+      }
+
+      &:hover, &:focus {
+        border: 1px solid $border_color_hover;
+        transition: none;
+      }
+      //&:invalid {
+      //  box-shadow: initial;
+      //}
+    }
+  }
+
+  // класс на поле с ошибкой
+  &.invalid {
+    input {
+      background-color: $input_bg_error;
+      border: 1px solid $border_color_invalid;
+
+      &:hover, &:focus {
+        border: 1px solid $border_color_invalid;
+      }
+    }
+  }
+
+  // класс текстового описания ошибки
+  .error {
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    max-width: 250px;
+    position: absolute;
+    //top: 8px;
+    left: -12px;
+    //right: 100%;
+    padding: 7px 10px;
+    border-radius: 5px;
+    font-size: rem(14);
+    color: $white;
+    background-color: $red;
+    transform: translateX(-100%);
+    animation: fadeout 0.2s forwards linear;
+
+    &:after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: calc(100% - 1px);
+      transform: translateY(-50%);
+      width: 0;
+      height: 0;
+      border-top: 5px solid transparent;
+      border-bottom: 5px solid transparent;
+      border-left: 8px solid $red;
+
+      @include for-phone-only() {
+        display: none;
+      }
+    }
+
+    @include for-phone-only() {
+      display: inline-block;
+      margin-top: 5px;
+      position: relative;
+      padding: 10px;
+      max-width: 100%;
+      top: initial;
+      left: initial;
+      transform: none;
+    }
+  }
+}

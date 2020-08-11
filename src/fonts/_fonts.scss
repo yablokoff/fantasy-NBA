@@ -1,0 +1,10 @@
+/* TODO: вставить реальные шрифты */
+@import "./Roboto/font";
+@import "./RobotoBold/font";
+
+
+.fonts-loaded {
+  body {
+    font-family: 'Roboto', sans-serif;
+  }
+}

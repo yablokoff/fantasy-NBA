@@ -1,0 +1,41 @@
+@import "deps";
+
+
+.letters {
+  transform-style: preserve-3d;
+
+  .letter {
+    display: inline-block;
+    transform-origin: 50% 100%;
+    white-space: pre;
+
+    //position: relative;
+    //color: transparent;
+    //
+    //&.state-1::before {
+    //  width: 1px;
+    //}
+    //&::before {
+    //  content: '';
+    //  position: absolute;
+    //  top: 50%;
+    //  left: 50%;
+    //  background: #0e182d;
+    //  width: 0;
+    //  height: 1.2em;
+    //  -ms-transform: translate(-50%,-55%);
+    //  transform: translate(-50%,-55%);
+    //}
+    //
+    //&.state-2::before {
+    //  width: .9em;
+    //}
+    //
+    //&.state-3 {
+    //  color: inherit;
+    //}
+    //&.state-3::before {
+    //  display: none;
+    //}
+  }
+}

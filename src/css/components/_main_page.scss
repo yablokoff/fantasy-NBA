@@ -1,0 +1,167 @@
+@import "../deps";
+
+
+.cards-wrapper {
+
+  .list-item {
+    @include media_interval(0, $media-tablet-portrait) {
+      @include flex-columns(2, 20px, 20px);
+    }
+    @include media_interval($media-tablet-portrait, $media-tablet-landscape) {
+      @include flex-columns(2, 30px, 30px);
+    }
+    @include media_interval($media-tablet-landscape, $media-desktop) {
+      @include flex-columns(3, 40px, 40px);
+    }
+    @include media_interval($media-desktop, 0) {
+      @include flex-columns(3, 50px, 50px);
+    }
+
+    // mount list items
+    &.enter {
+      .card-image-wrapper {
+        filter: grayscale(0) opacity(0);
+
+        .card-image {
+          transform: scale(1.05);
+        }
+      }
+
+      .button-wrapper {
+        opacity: 0;
+      }
+    }
+    &.active-enter {
+      .card-image-wrapper {
+        filter: grayscale(100%) opacity(100%);
+        transition: filter $appear-animation-duration $animation-func;
+
+        .card-image {
+          transform: scale(1);
+          transition: transform $appear-animation-duration $animation-func;
+        }
+      }
+
+      .button-wrapper {
+        opacity: 1;
+        transition: opacity $appear-animation-duration $animation-func;
+      }
+    }
+    &.done-enter {
+      .card-image-wrapper {
+        filter: grayscale(100%) opacity(100%);
+        transition: filter 1s $animation-func,
+        box-shadow 0.6s $animation-func;
+
+        .card-image {
+          transition: transform 1.2s $animation-func;
+        }
+      }
+    }
+
+    // unmount list items
+    //&.active-exit {
+    //  .card-image-wrapper {
+    //    filter: grayscale(100%) opacity(0);
+    //  }
+    //
+    //  .button-wrapper {
+    //    opacity: 0;
+    //  }
+    //}
+
+    .card {
+      cursor: pointer;
+
+      .card-image-wrapper {
+        overflow: hidden;
+        position: relative;
+        border-radius: 10px;
+        padding-top: #{100% * ($card_h / $card_w)};
+        //padding-top: #{100% * (600 / 450)};
+
+        .card-image {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          position: absolute;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          left: 0;
+          will-change: transform;
+        }
+      }
+
+      // states
+      &.skipped {
+        .card-image-wrapper {
+          filter: grayscale(100%) opacity(60%);
+        }
+      }
+      @at-root .can-hover & {
+        &:hover {
+          .card-image-wrapper {
+            filter: grayscale(0) opacity(100%);
+            box-shadow: 0 10px 40px rgba(150, 153, 157, 0.5);
+
+            .card-image {
+              transform: scale(1.05);
+            }
+          }
+        }
+      }
+      &.selected {
+        .card-image-wrapper {
+          filter: grayscale(0) opacity(100%);
+
+          //.card-image {
+          //  transform: scale(1.05);
+          //}
+        }
+      }
+    }
+  }
+
+  .rules {
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-left: 10px;
+    margin-bottom: 15px;
+    max-width: 130px;
+    line-height: 1.2;
+    font-size: rem(16);
+    @include for-tablet-portrait-up() {
+      font-size: rem(18);
+    }
+    @include for-tablet-landscape-up() {
+      font-size: rem(20);
+    }
+  }
+
+  .button-wrapper {
+    .btn {
+      padding: 60px 42px;
+
+      @include for-phone-only() {
+        font-size: rem(16);
+      }
+      @include media_interval($media-tablet-portrait, $media-tablet-landscape) {
+        font-size: rem(18);
+      }
+
+      &:before {
+        height: 0;
+        padding-bottom: 0;
+        transition: width .2s ease, height .2s ease; // cant animate padding in safari
+      }
+
+      &:active, &:disabled {
+        &:before {
+          width: 180%;
+          height: 180%;
+        }
+      }
+    }
+  }
+}

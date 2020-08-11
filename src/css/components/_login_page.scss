@@ -1,0 +1,112 @@
+@import "../deps";
+
+
+// head
+.head-label-wrapper {
+  background-color: $white;
+  @include vpad(3px);
+  @include for-tablet-portrait-up() {
+    margin-top: 20px;
+  }
+}
+
+.head-label {
+  font-weight: bold;
+  text-transform: uppercase;
+  overflow: hidden;
+  font-size: rem(18);
+  @include for-tablet-portrait-up() {
+    font-size: rem(22);
+  }
+  @include for-tablet-landscape-up() {
+    font-size: rem(26);
+  }
+}
+
+// form
+.form-wrapper {
+
+  .form-content {
+    perspective: 2000px;
+
+    .form-label {
+      font-weight: bold;
+      text-transform: uppercase;
+      background: linear-gradient(to right, $white, $white) center bottom no-repeat;
+      background-size: 3px 3px;
+      //background-size: 260px 2px;
+      transform-style: preserve-3d;
+      @include vpad(30px, 32px);
+      font-size: rem(26);
+      @include for-tablet-portrait-up() {
+        @include vpad(40px, 42px);
+        font-size: rem(44);
+      }
+      @include for-tablet-landscape-up() {
+        @include vpad(60px, 62px);
+        font-size: rem(50);
+      }
+    }
+
+    .awards {
+      margin: 0;
+      padding: 30px 0;
+      list-style: none;
+      counter-reset: item;
+      font-weight: bold;
+      font-size: rem(16);
+      transform-style: preserve-3d;
+
+      @include for-tablet-portrait-up() {
+        font-size: rem(18);
+        padding: 40px 0;
+      }
+      @include for-tablet-landscape-up() {
+        font-size: rem(20);
+      }
+
+      .award {
+        margin-bottom: 5px;
+        &:last-of-type {
+          margin-bottom: 0;
+        }
+
+        &:before {
+          counter-increment: item;
+          content: counter(item)"th PLACE: ";
+        }
+        &:nth-child(10n+1):not(:nth-child(11)):before {
+          content: counter(item)"st PLACE: ";
+        }
+        &:nth-child(10n+2):not(:nth-child(12)):before {
+          content: counter(item)"nd PLACE: ";
+        }
+        &:nth-child(10n+3):not(:nth-child(13)):before {
+          content: counter(item)"rd PLACE: ";
+        }
+      }
+
+      .award-label {
+        text-transform: uppercase;
+      }
+    }
+  }
+
+  .form {
+    max-width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+
+    .form-fields {
+
+    }
+    .form-btn-wrap {
+      margin-top: 30px;
+      perspective: 2000px;
+
+      .btn {
+        transform-style: preserve-3d;
+      }
+    }
+  }
+}

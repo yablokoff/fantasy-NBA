@@ -1,0 +1,75 @@
+@import "deps";
+
+
+html, body {
+  height: 100%;
+}
+
+body {
+  overflow-x: hidden;
+  color: $text-color;
+  line-height: 1;
+  font-family: sans-serif;
+  font-size: 0;
+}
+
+img {
+  height: auto;
+  max-width: 100%;
+  vertical-align: middle;
+}
+
+#app-page {
+  overflow: hidden;
+  min-height: 100vh;
+  background-color: $light-gray;
+  @include for-tablet-landscape-up() {
+    display: flex;
+  }
+}
+
+#app-main {
+  display: flex;
+  min-height: inherit;
+  flex-direction: column;
+  justify-content: center;
+  box-sizing: border-box;
+  padding-top: $grid-gutter-width;
+  padding-bottom: $grid-gutter-width;
+
+  @include for-tablet-landscape-up() {
+    flex-grow: 1;
+    flex-basis: 0;
+  }
+}
+
+.container {
+  width: 100%;
+  max-width: $grid-max-width;
+  box-sizing: border-box;
+  margin-right: auto;
+  margin-left: auto;
+  padding-left: $grid-gutter-width / 2;
+  padding-right: $grid-gutter-width / 2;
+
+  @include for-tablet-portrait-up() {
+    padding-left: $grid-gutter-width;
+    padding-right: $grid-gutter-width;
+  }
+}
+
+.list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.text {
+  font-size: rem(16);
+  @include for-tablet-landscape-up() {
+    font-size: rem(20);
+  }
+}
+
+.center-text {
+  text-align: center;
+}
