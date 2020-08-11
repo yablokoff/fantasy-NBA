@@ -55,7 +55,12 @@ module.exports = {
     plugins: [
         new webpack.ProgressPlugin(),
         new HtmlWebpackPlugin({template: './src/index.html'}),
-        new FaviconsWebpackPlugin('./src/img/favicon.png'),
+        new FaviconsWebpackPlugin({
+            logo: path.resolve(config.SOURCE_DIR, 'img/favicon.png'),
+            favicons: {
+                manifestRelativePaths: true,
+            }
+        }),
         // new BundleTracker({
         //     filename: path.relative('.', config.js.client_manifest)
         // }),
