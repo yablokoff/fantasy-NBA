@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "webpack --config webpack.prod.js",
-    "predeploy": "npm run build",
+    "predeploy": "npm run build && node predeploy.js",
     "deploy": "gh-pages -d dist",
     "start": "webpack-dev-server --config webpack.dev.js",
     "test": "jest",
