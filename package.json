@@ -69,7 +69,7 @@
   },
   "author": "",
   "license": "ISC",
-  "homepage": "https://mywebsite.com",
+  "homepage": "https://yablokoff.github.io",
   "dependencies": {
     "@mollycule/react-anime": "0.0.7",
     "axios": "^0.19.2",
