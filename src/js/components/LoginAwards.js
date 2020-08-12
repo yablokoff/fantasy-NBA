@@ -1,6 +1,7 @@
 import React from "react";
 import anime from "animejs";
 import Anime from "@mollycule/react-anime";
+import SplitText from "./SplitText";
 
 
 const delay = 400;
@@ -13,10 +14,6 @@ const awards = awardsValues.map(
 );
 
 export default ({ title }) => {
-    const letters = title.split('').map(
-        (letter, i) => <span key={i + letter} className="letter">{letter}</span>
-    );
-
     return (
         <div className="form-content center-text">
             <Anime
@@ -39,23 +36,18 @@ export default ({ title }) => {
                 }}>
 
                 <div className="form-label">
-                    <div className="letters">
-                        <Anime
-                            in
-                            duration={900}
-                            appear
-                            onEntering={{
-                                opacity: [0, 1],
-                                translateX: [-140, 0],
-                                scale: [1.2, 1],
-                                rotateY: [-210, 0],
-                                rotateZ: [-90, 0],
-                                easing: 'easeOutElastic(1, 0.6)',
-                                delay: anime.stagger(80, {start: delay})
-                            }}>
-                            {letters}
-                        </Anime>
-                    </div>
+                    <SplitText
+                        text={title}
+                        duration={900}
+                        onEnterAnimation={{
+                            opacity: [0, 1],
+                            translateX: [-140, 0],
+                            scale: [1.2, 1],
+                            rotateY: [-210, 0],
+                            rotateZ: [-90, 0],
+                            easing: 'easeOutElastic(1, 0.6)',
+                            delay: anime.stagger(80, {start: delay})
+                        }} />
                 </div>
             </Anime>
 

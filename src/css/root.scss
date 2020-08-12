@@ -3,12 +3,13 @@
 
 // core
 @import "base";
-@import "animations";
 
 // components
 @import
+  "components/preloader",
+  "components/split_text",
   "components/field",
   "components/button",
   "components/login_page",
   "components/main_page",
-  "components/preloader";
+  "components/thanks_page";

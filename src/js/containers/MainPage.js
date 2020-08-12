@@ -5,7 +5,6 @@ import { useSelector } from "react-redux";
 import Page from "../components/Page";
 import Cards from "../components/Cards";
 import routes from "../constants/routes";
-// import { selectedCards } from "../storage/cards";
 
 
 const MainPage = () => {

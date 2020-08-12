@@ -8,18 +8,18 @@
   @include for-tablet-portrait-up() {
     margin-top: 20px;
   }
-}
 
-.head-label {
-  font-weight: bold;
-  text-transform: uppercase;
-  overflow: hidden;
-  font-size: rem(18);
-  @include for-tablet-portrait-up() {
-    font-size: rem(22);
-  }
-  @include for-tablet-landscape-up() {
-    font-size: rem(26);
+  .head-label {
+    font-weight: bold;
+    text-transform: uppercase;
+    overflow: hidden;
+    font-size: rem(16);
+    @include for-tablet-portrait-up() {
+      font-size: rem(20);
+    }
+    @include for-tablet-landscape-up() {
+      font-size: rem(24);
+    }
   }
 }
 
@@ -37,7 +37,7 @@
       //background-size: 260px 2px;
       transform-style: preserve-3d;
       @include vpad(30px, 32px);
-      font-size: rem(26);
+      font-size: rem(37);
       @include for-tablet-portrait-up() {
         @include vpad(40px, 42px);
         font-size: rem(44);

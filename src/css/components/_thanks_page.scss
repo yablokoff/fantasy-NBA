@@ -1,0 +1,120 @@
+@import "../deps";
+
+
+$cards_width_wide: 240px;
+$cards_width_tablet: 180px;
+$cards_width_mobile: 120px;
+
+$cards_media_tablet: $media-tablet-portrait;
+$cards_media_mobile: 400px;
+
+
+.thanks-wrapper {
+  .thanks-label {
+    font-weight: bold;
+    text-transform: uppercase;
+    overflow: hidden;
+    margin-bottom: 40px;
+    font-size: rem(18);
+    @include for-tablet-portrait-up() {
+      font-size: rem(20);
+      margin-top: 20px;
+    }
+    @include for-phone-only() {
+      margin-bottom: 30px;
+    }
+  }
+
+  .thanks-text-block {
+    padding: 15px;
+    max-width: 300px;
+    background-color: $white;
+    box-sizing: border-box;
+    border-radius: 6px;
+    margin-right: auto;
+    margin-left: auto;
+    margin-bottom: 30px;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: rem(16);
+    line-height: 1.4;
+    white-space: pre;
+
+    @include for-tablet-portrait-up() {
+      padding: 20px;
+      font-size: rem(20);
+    }
+    @include for-phone-only() {
+      margin-bottom: 20px;
+    }
+  }
+
+  .selected-cards {
+    margin-top: 60px;
+    height: calc(#{($card_h / $card_w)} * #{$cards_width_wide});
+    display: flex;
+    justify-content: center;
+    position: relative;
+    //perspective: 1000px;
+
+    @include media_interval($cards_media_mobile, $cards_media_tablet) {
+      margin-top: 40px;
+      height: calc(#{($card_h / $card_w)} * #{$cards_width_tablet});
+    }
+    @include media_interval(0, $cards_media_mobile) {
+      margin-top: 30px;
+      height: calc(#{($card_h / $card_w)} * #{$cards_width_mobile});
+    }
+
+    .selected-card {
+      //cursor: pointer;
+      position: absolute;
+      transform-origin: 50% 100%;
+
+      &:first-of-type {
+        transform: rotate(-16deg) translate(-100px, -10px);
+        @include media_interval(0, $cards_media_mobile) {
+          transform: rotate(-16deg) translate(-66px, -6px);
+        }
+      }
+      &:last-of-type {
+        transform: rotate(16deg) translate(100px, -10px);
+        @include media_interval(0, $cards_media_mobile) {
+          transform: rotate(16deg) translate(66px, -6px);
+        }
+      }
+
+      //@at-root .can-hover & {
+      //  &:hover {
+      //    z-index: 1;
+      //  }
+      //}
+
+      .card-image-wrapper {
+        overflow: hidden;
+        position: relative;
+        border-radius: 10px;
+        padding-top: #{100% * ($card_h / $card_w)};
+        width: $cards_width_wide;
+
+        @include media_interval($cards_media_mobile, $cards_media_tablet) {
+          width: $cards_width_tablet;
+        }
+        @include media_interval(0, $cards_media_mobile) {
+          width: $cards_width_mobile;
+        }
+
+        .card-image {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          position: absolute;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          left: 0;
+        }
+      }
+    }
+  }
+}

@@ -27,11 +27,12 @@ const Cards = (props) => {
     const [showCards, setShowCards] = useState(false);
 
     useEffect(() => {
-        console.log('fetch cards');
         if (!show) {
             dispatch(showPreloader());
         }
-        dispatch(loadCards()).then(
+        dispatch(
+            loadCards()
+        ).then(
             ({value, action}) => {
                 if (action && action.type === LOAD_CARDS_FULFILLED) {
                     const cards = formattingCardsResponse(value.data);
@@ -40,7 +41,8 @@ const Cards = (props) => {
                     });
                     return loadImages(cards.map(card => card.image_url))
                 }
-            }, (error) => {}).then(() => {
+            }, (error) => {}
+        ).then(() => {
             dispatch(hidePreloader());
             setShowCards(true);
         });
@@ -78,6 +80,8 @@ const Cards = (props) => {
                 }
             }, (error) => {});
     };
+
+    if (!cards.length) return null;
 
     return (
         <div className="list">

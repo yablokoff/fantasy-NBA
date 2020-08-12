@@ -18,7 +18,7 @@ const LoginPage = (props) => {
             :
             <Page>
                 <React.Fragment>
-                    <LoginLabel name="frank michael smith's" />
+                    <LoginLabel title="frank michael smith's" />
 
                     <div className="form-wrapper">
                         <div className="container">
