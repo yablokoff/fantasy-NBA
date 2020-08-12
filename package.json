@@ -5,6 +5,8 @@
   "main": "index.js",
   "scripts": {
     "build": "webpack --config webpack.prod.js",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist",
     "start": "webpack-dev-server --config webpack.dev.js",
     "test": "jest",
     "test:watch": "npm run test -- --watch"
@@ -25,6 +27,7 @@
     "babel-plugin-lodash": "^3.3.4",
     "babel-plugin-transform-imports": "^2.0.0",
     "clean-webpack-plugin": "^3.0.0",
+    "copy-dir": "^1.3.0",
     "cssnano": "^4.1.10",
     "dotenv": "^8.2.0",
     "eslint": "^7.5.0",
@@ -39,6 +42,7 @@
     "favicons-webpack-plugin": "^4.2.0",
     "file-loader": "^6.0.0",
     "fontfaceobserver": "^2.1.0",
+    "gh-pages": "^3.1.0",
     "html-webpack-plugin": "^4.3.0",
     "jest": "^26.1.0",
     "jest-localstorage-mock": "2.4.3",
@@ -65,7 +69,7 @@
   },
   "author": "",
   "license": "ISC",
-  "homepage": "",
+  "homepage": "https://mywebsite.com",
   "dependencies": {
     "@mollycule/react-anime": "0.0.7",
     "axios": "^0.19.2",

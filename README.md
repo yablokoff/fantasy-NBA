@@ -11,3 +11,13 @@ npm i
 npm run build
 make run
 ```
+
+### View bundle analyzer report
+```shell script
+npm run build --report
+```
+
+### Deploy
+```shell script
+npm run deploy
+```

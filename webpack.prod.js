@@ -85,7 +85,7 @@ module.exports = [
                 chunkFilename: '[name].chunk.min.css',
             }),
             new CleanWebpackPlugin(),
-            // new BundleAnalyzerPlugin()
+            ...(config.bundleAnalyzerReport ? [new BundleAnalyzerPlugin()] : [])
         ],
         optimization: {
             minimizer: [
