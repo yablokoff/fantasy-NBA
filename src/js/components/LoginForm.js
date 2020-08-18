@@ -61,6 +61,7 @@ const WrappedField = ({ input, meta, placeholder, animationDelay }) => {
             in
             duration={800}
             appear
+            initProps={{opacity: 0}}
             onEntering={{
                 opacity: [0, 1],
                 translateX: [-270, 0],
@@ -148,6 +149,7 @@ const LoginForm = ({ next }) => {
                             in
                             duration={1000}
                             appear
+                            initProps={{opacity: 0}}
                             onEntering={{
                                 opacity: [0, 1],
                                 translateX: [270, 0],

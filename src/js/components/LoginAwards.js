@@ -56,6 +56,7 @@ export default ({ title }) => {
                     in
                     duration={800}
                     appear
+                    initProps={{opacity: 0}}
                     onEntering={{
                         opacity: [0, 1],
                         translateX: [270, 0],
