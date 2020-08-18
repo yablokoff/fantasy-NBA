@@ -69,7 +69,7 @@
   },
   "author": "",
   "license": "ISC",
-  "homepage": "https://yablokoff.github.io/fantasy-NBA",
+  "homepage": "https://fantasy.frankmichaelsmith.com/fantasy-NBA",
   "dependencies": {
     "@mollycule/react-anime": "0.0.7",
     "axios": "^0.19.2",

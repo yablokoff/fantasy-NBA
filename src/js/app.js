@@ -10,7 +10,7 @@ import "css/root.scss";
 
 
 render(
-    <Router>
+    <Router basename="/fantasy-NBA">
         <Root store={store} />
     </Router>,
     document.getElementById('root')
