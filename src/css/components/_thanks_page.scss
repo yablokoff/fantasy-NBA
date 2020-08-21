@@ -110,7 +110,6 @@ $cards_media_mobile: 400px;
       .card-image-wrapper {
         overflow: hidden;
         position: relative;
-        border-radius: 10px;
         padding-top: #{100% * ($card_h / $card_w)};
         width: $cards_width_wide;
 
@@ -130,6 +129,7 @@ $cards_media_mobile: 400px;
           right: 0;
           bottom: 0;
           left: 0;
+          transform: translateZ(0); // fix chrome img blurry
         }
       }
     }

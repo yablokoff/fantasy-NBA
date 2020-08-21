@@ -21,10 +21,7 @@
     &.enter {
       .card-image-wrapper {
         filter: grayscale(0) opacity(0);
-
-        .card-image {
-          transform: scale(1.05);
-        }
+        //transform: scale(1.05);
       }
 
       .button-wrapper {
@@ -34,12 +31,10 @@
     &.active-enter {
       .card-image-wrapper {
         filter: grayscale(100%) opacity(100%);
-        transition: filter $appear-animation-duration $animation-func;
-
-        .card-image {
-          transform: scale(1);
-          transition: transform $appear-animation-duration $animation-func;
-        }
+        transition: filter $appear-animation-duration $animation-func,
+        box-shadow 1s $animation-func;
+        //transform $appear-animation-duration $animation-func;
+        //transform: scale(1);
       }
 
       .button-wrapper {
@@ -51,11 +46,8 @@
       .card-image-wrapper {
         filter: grayscale(100%) opacity(100%);
         transition: filter 1s $animation-func,
-        box-shadow 0.6s $animation-func;
-
-        .card-image {
-          transition: transform 1.2s $animation-func;
-        }
+        box-shadow 1s $animation-func;
+        //transform 1.2s $animation-func;
       }
     }
 
@@ -76,9 +68,12 @@
       .card-image-wrapper {
         overflow: hidden;
         position: relative;
-        border-radius: 10px;
+        border-radius: 16px 16px 3px 8px;
         padding-top: #{100% * ($card_h / $card_w)};
         //padding-top: #{100% * (600 / 450)};
+        @include for-phone-only() {
+          border-radius: 9px 9px 3px 3px;
+        }
 
         .card-image {
           width: 100%;
@@ -89,7 +84,9 @@
           right: 0;
           bottom: 0;
           left: 0;
-          will-change: transform;
+          user-select: none;
+          //will-change: transform;
+          transform: translateZ(0); // fix chrome img blurry
         }
       }
 
@@ -104,20 +101,14 @@
           .card-image-wrapper {
             filter: grayscale(0) opacity(100%);
             box-shadow: 0 10px 40px rgba(150, 153, 157, 0.5);
-
-            .card-image {
-              transform: scale(1.05);
-            }
+            //transform: scale(1.05);
           }
         }
       }
       &.selected {
         .card-image-wrapper {
           filter: grayscale(0) opacity(100%);
-
-          //.card-image {
-          //  transform: scale(1.05);
-          //}
+          //transform: scale(1.05);
         }
       }
     }
