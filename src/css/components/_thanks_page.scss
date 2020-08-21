@@ -70,6 +70,7 @@ $cards_media_mobile: 400px;
       //cursor: pointer;
       position: absolute;
       transform-origin: 50% 100%;
+      transition: transform 0.3s;
 
       &:first-of-type {
         transform: rotate(-16deg) translate(-100px, -10px);
@@ -84,11 +85,27 @@ $cards_media_mobile: 400px;
         }
       }
 
-      //@at-root .can-hover & {
-      //  &:hover {
-      //    z-index: 1;
-      //  }
-      //}
+      @at-root .can-hover & {
+        &:first-of-type {
+          &:hover {
+            & ~ .selected-card {
+              &:nth-of-type(2) {
+                transform: rotate(8deg) translate(75px, -20px);
+              }
+              &:last-of-type {
+                transform: rotate(20deg) translate(200px, -60px);
+              }
+            }
+          }
+        }
+        &:nth-of-type(2) {
+          &:hover {
+            & + .selected-card {
+              transform: rotate(20deg) translate(200px, -60px);
+            }
+          }
+        }
+      }
 
       .card-image-wrapper {
         overflow: hidden;
