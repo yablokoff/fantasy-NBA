@@ -14,7 +14,6 @@ const SplitText = (props) => {
                 in
                 duration={props.duration}
                 appear
-                initProps={{opacity: 0}}
                 onEntering={props.onEnterAnimation}
                 onExiting={props.onExitAnimation}>
                 {letters}
