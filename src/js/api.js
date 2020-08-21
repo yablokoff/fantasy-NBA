@@ -35,8 +35,19 @@ export const axiosAPI = axios.create({
 
 export const urls = {
     cards: 'Cards',
-    users: 'Users',
+    daily: 'Daily players',
     sets: 'Sets',
+    users: 'Users',
+};
+
+export const formattingDailyPlayersResponse = (data) => {
+    const { records } = data;
+    if (!records.length) return [];
+    
+    return records.map(dp => {
+        const { fields } = dp;
+        return fields["Player"][0]
+    });
 };
 
 export const formattingCardsResponse = (data) => {
@@ -45,8 +56,7 @@ export const formattingCardsResponse = (data) => {
         const { fields } = card;
         const first_image = fields["Card"][0];
         return {
-            db_id: card.id,             // for create set through API
-            id: fields["Card ID"],      // for filter in fetching cards through API
+            id: card.id,
             name: fields["Name"],
             image_url: first_image.url
         }

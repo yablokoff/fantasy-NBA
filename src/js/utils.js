@@ -1,14 +1,13 @@
-import React from "react";
 
 /**
- * Returns a random number between min (inclusive) and max (exclusive)
+ * Returns a random number between min (inclusive) and max (inclusive)
  */
 const randomInteger = (min, max) => {
     let rand = min + Math.random() * (max + 1 - min);
     return Math.floor(rand);
 };
 
-export const getRandomIntList = ({ count=5, rangeMin=1, rangeMax=100 }) => {
+export const getRandomIntList = ({ count=5, rangeMin=0, rangeMax=100 }) => {
     let result = [];
 
     while (result.length < count) {

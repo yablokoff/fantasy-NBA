@@ -8,6 +8,7 @@ import { showPreloader, hidePreloader, loadCards, setCards } from "../actions";
 import { fetchedCards, selectedCards } from "../storage/cards";
 import { formattingCardsResponse } from "../api";
 import { loadImages } from "../utils";
+import PropTypes from "prop-types";
 
 
 const appearAnimationDuration = 2000;
@@ -20,25 +21,19 @@ const animationClasses = {
     exitDone: 'done-exit',
 };
 
-const Cards = (props) => {
+const MainList = (props) => {
     const dispatch = useDispatch();
-    const { show } = useSelector(state => state.preloader);
     const { cards } = useSelector(store => store.cards);
     const [showCards, setShowCards] = useState(false);
 
     useEffect(() => {
-        if (!show) {
-            dispatch(showPreloader());
-        }
+        dispatch(showPreloader());
         dispatch(
-            loadCards()
+            loadCards(props.fetched_ids)
         ).then(
             ({value, action}) => {
                 if (action && action.type === LOAD_CARDS_FULFILLED) {
                     const cards = formattingCardsResponse(value.data);
-                    fetchedCards.set({
-                        card_ids: cards.map(card => card.id)
-                    });
                     return loadImages(cards.map(card => card.image_url))
                 }
             }, (error) => {}
@@ -134,8 +129,8 @@ const Cards = (props) => {
     );
 };
 
-Cards.propTypes = {
-
+MainList.propTypes = {
+    fetched_ids: PropTypes.array.isRequired
 };
 
-export default Cards;
+export default MainList;

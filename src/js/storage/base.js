@@ -38,6 +38,28 @@ Store.prototype.get = function() {
     return data;
 };
 
+/*
+    Инвалидация данных.
+ */
+Store.prototype._isValid = function(data) {
+    return data
+};
+
+
+/*
+    Проверка на актуальность.
+ */
+Store.prototype.getOrInvalidate = function() {
+     const data = this.get();
+    if (data) {
+        if (this._isValid(data)) {
+            return data;
+        } else {
+            this.clear();
+        }
+    }
+};
+
 
 /*
     Удаление из storage.

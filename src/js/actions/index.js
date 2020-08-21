@@ -1,23 +1,42 @@
+import dayjs from "dayjs";
+import utc from "dayjs/plugin/utc";
+
 import * as ActionTypes from "../constants/ActionTypes";
-import { CARDS_SHOW_COUNT } from "../constants/defaults";
+import { CARDS_SHOW_COUNT, QUERY_DATE_FORMAT } from "../constants/defaults";
 import { fetchedCards } from "../storage/cards";
 
 import { axiosAPI, urls } from "../api";
 import { getUser } from "../storage/auth";
 
 
+dayjs.extend(utc);
+
+
 // preloader
-export const showPreloader = () => {
-    return {
-        type: ActionTypes.SHOW_PRELOADER
+export const showPreloader = () => (dispatch, getState) => {
+    const { show } = getState().preloader;
+
+    if (show) {
+        return null
     }
+
+    return dispatch({
+        type: ActionTypes.SHOW_PRELOADER
+    })
 };
 
-export const hidePreloader = () => {
-    return {
-        type: ActionTypes.HIDE_PRELOADER
+export const hidePreloader = () => (dispatch, getState) => {
+    const { show } = getState().preloader;
+
+    if (!show) {
+        return null
     }
+
+    return dispatch({
+        type: ActionTypes.HIDE_PRELOADER
+    })
 };
+
 
 // user
 export const loginUser = (Email, Instagram, Phone) => dispatch => {
@@ -33,18 +52,36 @@ export const loginUser = (Email, Instagram, Phone) => dispatch => {
     });
 };
 
+// daily players
+export const loadDailyPlayers = () => (dispatch, getState) => {
+    const state = getState();
+    if (state.fetchedCardsIDs.isFetching) {
+        return Promise.reject(null)
+    }
+
+    const filter = `Date=TODAY()`;
+    // const now = dayjs.utc();
+    // const filter = `Date=${now.format(QUERY_DATE_FORMAT)}`;
+
+    return dispatch({
+        type: ActionTypes.LOAD_DAILY_PLAYERS,
+        payload: axiosAPI.get(urls.daily, {
+            params: {
+                filterByFormula: filter,
+                // maxRecords: 100
+            }
+        })
+    });
+};
 
 // cards
 export const loadCards = (ids) => (dispatch, getState) => {
     const state = getState();
-    if (state.cards.isFetching) {
+    if (state.cards.isFetching || !ids) {
         return Promise.reject(null)
     }
 
-    ids = ids || fetchedCards.getIds();
-
-    // OR({Card ID}=1,{Card ID}=2,{Card ID}=3,{Card ID}=4,{Card ID}=5)
-    const operands = ids.map(value => `{Card ID}=${value}`);
+    const operands = ids.map(value => `RECORD_ID()='${value}'`);
     const filter = `OR(${operands.join(',')})`;
 
     return dispatch({
@@ -58,9 +95,10 @@ export const loadCards = (ids) => (dispatch, getState) => {
     });
 };
 
+// user set
 export const setCards = (selected_ids) => (dispatch, getState) => {
     const state = getState();
-    if (state.selectedCards.isSending) {
+    if (state.selectedCardsIDs.isSending) {
         return Promise.reject(null)
     }
 

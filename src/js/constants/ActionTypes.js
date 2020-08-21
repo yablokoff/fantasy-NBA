@@ -11,12 +11,19 @@ export const LOGIN_PENDING = `LOGIN_${ActionType.Pending}`;
 export const LOGIN_FULFILLED = `LOGIN_${ActionType.Fulfilled}`;
 export const LOGIN_REJECTED = `LOGIN_${ActionType.Rejected}`;
 
+// daily players
+export const LOAD_DAILY_PLAYERS = 'LOAD_DAILY_PLAYERS';
+export const LOAD_DAILY_PLAYERS_PENDING = `LOAD_DAILY_PLAYERS_${ActionType.Pending}`;
+export const LOAD_DAILY_PLAYERS_FULFILLED = `LOAD_DAILY_PLAYERS_${ActionType.Fulfilled}`;
+export const LOAD_DAILY_PLAYERS_REJECTED = `LOAD_DAILY_PLAYERS_${ActionType.Rejected}`;
+
 // cards
 export const LOAD_CARDS = 'LOAD_CARDS';
 export const LOAD_CARDS_PENDING = `LOAD_CARDS_${ActionType.Pending}`;
 export const LOAD_CARDS_FULFILLED = `LOAD_CARDS_${ActionType.Fulfilled}`;
 export const LOAD_CARDS_REJECTED = `LOAD_CARDS_${ActionType.Rejected}`;
 
+// set
 export const SET_SELECTED_CARDS = 'SET_SELECTED_CARDS';
 export const SET_SELECTED_CARDS_PENDING = `SET_SELECTED_CARDS_${ActionType.Pending}`;
 export const SET_SELECTED_CARDS_FULFILLED = `SET_SELECTED_CARDS_${ActionType.Fulfilled}`;

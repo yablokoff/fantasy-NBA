@@ -9,7 +9,6 @@ const initialState = {
     error: false
 };
 
-
 const cardsReducer = (state = initialState, action) => {
     switch (action.type) {
         case ActionTypes.LOAD_CARDS_PENDING:
