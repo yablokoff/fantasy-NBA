@@ -46,7 +46,10 @@ export const formattingDailyPlayersResponse = (data) => {
     
     return records.map(dp => {
         const { fields } = dp;
-        return fields["Player"][0]
+        return {
+            id: dp.id,
+            card_id: fields["Player"][0]
+        }
     });
 };
 

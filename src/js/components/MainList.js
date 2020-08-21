@@ -67,11 +67,14 @@ const MainList = (props) => {
 
         const cards_ids = cards.map(card => card.id);
         const selected_ids = cards_ids.filter((id, i) => choicedCards[i]);
-        dispatch(setCards(selected_ids)).then(
+        dispatch(setCards(selected_ids, choicedCards.slice())).then(
             ({value, action}) => {
                 if (action && action.type === SET_SELECTED_CARDS_FULFILLED) {
+                    selectedCards.set({
+                        selected_ids,
+                        ts: value.data.fields["Date"]
+                    });
                     fetchedCards.clear();
-                    selectedCards.set({ selected_ids, ts: value.data.fields["Date"] });
                 }
             }, (error) => {});
     };

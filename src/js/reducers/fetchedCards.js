@@ -28,9 +28,10 @@ export default (state = initialState, action) => {
             };
         }
         case ActionTypes.LOAD_DAILY_PLAYERS_FULFILLED:
+            const formattedData = formattingDailyPlayersResponse(action.payload.data);
             return {
                 ...state,
-                ids: formattingDailyPlayersResponse(action.payload.data),
+                ids: formattedData.map(pd => pd.card_id),
                 isFetching: false,
                 error: false
             };

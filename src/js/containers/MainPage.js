@@ -16,22 +16,23 @@ import routes from "../constants/routes";
 
 const MainPage = () => {
     const dispatch = useDispatch();
-    const { ids: fetched_ids } = useSelector(state => state.fetchedCardsIDs);
+    const fetched_ids = fetchedCards.get();
+    const card_ids = fetched_ids && fetched_ids.card_ids || [];
+    // const { ids: fetched_ids } = useSelector(state => state.fetchedCardsIDs);
     const { ids: selected_ids } = useSelector(state => state.selectedCardsIDs);
-    const hasFetched = fetched_ids.length;
+    const hasFetched = card_ids.length;
     const hasSelected = selected_ids.length;
 
     useEffect(() => {
         if (!hasSelected && !hasFetched) {
-            console.log('load daily');
             dispatch(showPreloader());
             dispatch(
                 loadDailyPlayers()
             ).then(
                 ({value, action}) => {
                     if (action && action.type === LOAD_DAILY_PLAYERS_FULFILLED) {
-                        const cards_ids = formattingDailyPlayersResponse(value.data);
-                        const count = cards_ids.length;
+                        const formattedData = formattingDailyPlayersResponse(value.data);
+                        const count = formattedData.length;
 
                         if (count < CARDS_SHOW_COUNT) {
                             dispatch(hidePreloader());
@@ -43,8 +44,12 @@ const MainPage = () => {
                             rangeMin: 0,
                             rangeMax: count - 1
                         });
+
+                        const pd_ids = formattedData.map(pd => pd.id);
+                        const cards_ids = formattedData.map(pd => pd.card_id);
                         fetchedCards.set({
-                            card_ids: cards_ids.filter((id, i) => indexes.includes(i))
+                            pd_ids: pd_ids.filter((id, i) => indexes.includes(i)),
+                            card_ids: cards_ids.filter((id, i) => indexes.includes(i)),
                         });
                     }
                 }, (error) => {}
@@ -59,7 +64,7 @@ const MainPage = () => {
             <Page>
                 <div className="cards-wrapper">
                     <div className="container">
-                        {hasFetched ? <MainList fetched_ids={fetched_ids} /> : <MainEmpty />}
+                        {hasFetched ? <MainList fetched_ids={card_ids} /> : <MainEmpty />}
                     </div>
                 </div>
             </Page>

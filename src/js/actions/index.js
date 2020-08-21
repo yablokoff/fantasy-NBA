@@ -68,7 +68,7 @@ export const loadDailyPlayers = () => (dispatch, getState) => {
         payload: axiosAPI.get(urls.daily, {
             params: {
                 filterByFormula: filter,
-                // maxRecords: 100
+                // maxRecords: 100              TODO pagination
             }
         })
     });
@@ -96,7 +96,7 @@ export const loadCards = (ids) => (dispatch, getState) => {
 };
 
 // user set
-export const setCards = (selected_ids) => (dispatch, getState) => {
+export const setCards = (selected_ids, bitmap) => (dispatch, getState) => {
     const state = getState();
     if (state.selectedCardsIDs.isSending) {
         return Promise.reject(null)
@@ -107,19 +107,17 @@ export const setCards = (selected_ids) => (dispatch, getState) => {
         return Promise.reject(null);
     }
 
-    const { cards } = state.cards;
-    if (!cards.length) {
+    const fetchedData = fetchedCards.get();
+    if (!fetchedData) {
         return Promise.reject(null);
     }
-
-    const filtered_cards = cards.filter(card => selected_ids.includes(card.id));
 
     return dispatch({
         type: ActionTypes.SET_SELECTED_CARDS,
         payload: axiosAPI.post(urls.sets, {
             fields: {
                 'User': [user], // API require array
-                'Cards': filtered_cards.map(card => card.db_id)
+                'Players_m2m': fetchedData.pd_ids.filter((id, i) => bitmap[i])
             }
         }),
         meta: {

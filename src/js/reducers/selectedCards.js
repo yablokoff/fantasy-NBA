@@ -19,7 +19,6 @@ export default (state = initialState, action) => {
             };
         case ActionTypes.SET_SELECTED_CARDS_REJECTED: {
             const { data } = action.payload.response || {};
-            console.log(data);
             return {
                 ...state,
                 isSending: false,
