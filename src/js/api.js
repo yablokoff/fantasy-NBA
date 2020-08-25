@@ -43,8 +43,8 @@ export const urls = {
 export const formattingDailyPlayersResponse = (data) => {
     const { records } = data;
     if (!records.length) return [];
-    
-    return records.map(dp => {
+
+    return records.filter(dp => Boolean(dp.fields["Player"])).map(dp => {
         const { fields } = dp;
         return {
             id: dp.id,
