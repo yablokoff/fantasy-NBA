@@ -33,7 +33,10 @@ const cardsReducer = (state = initialState, action) => {
             const data = fetchedCards.get();
             if (data) {
                 const ids = data.card_ids;
-                result.sort((a, b) => ids.indexOf(a.id) > ids.indexOf(b.id));
+                result.sort((a, b) => {
+                    if (ids.indexOf(a.id) > ids.indexOf(b.id)) return 1;
+                    if (ids.indexOf(a.id) < ids.indexOf(b.id)) return -1;
+                });
             }
 
             return {
