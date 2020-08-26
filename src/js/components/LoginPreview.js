@@ -1,34 +1,43 @@
 import React from "react";
-import anime from "animejs";
+// import anime from "animejs";
 import Anime from "@mollycule/react-anime";
 
-import SplitText from "./SplitText";
-import preview from "img/preview.png";
+// import SplitText from "./SplitText";
+import preview from "img/preview2.png";
 
 
-const delay = 400;
+const delay = 600;
 
 export default ({ text }) => {
     return (
         <div className="login-preview-wrapper">
-            <div className="login-preview">
-                <img src={preview} alt="preview"/>
-            </div>
+            <Anime
+                in
+                duration={1200}
+                appear
+                onEntering={{
+                    opacity: [0, 1],
+                    delay: delay,
+                    easing: "easeOutExpo"
+                }}>
+                <div className="login-preview">
+                    <img className="login-preview-img" src={preview} alt="preview"/>
+                </div>
+            </Anime>
 
-            <div className="login-preview-label center-text">
-                <SplitText
-                    text={text}
-                    duration={900}
-                    onEnterAnimation={{
-                        opacity: [0, 1],
-                        translateX: [-140, 0],
-                        scale: [1.2, 1],
-                        rotateY: [-210, 0],
-                        rotateZ: [-90, 0],
-                        easing: 'easeOutElastic(1, 0.6)',
-                        delay: anime.stagger(80, {start: delay})
-                    }} />
-            </div>
+            <Anime
+                in
+                duration={800}
+                appear
+                onEntering={{
+                    opacity: [0, 1],
+                    translateX: [270, 0],
+                    delay: delay
+                }}>
+                <div className="login-preview-label center-text">
+                    {text}
+                </div>
+            </Anime>
         </div>
     )
 };

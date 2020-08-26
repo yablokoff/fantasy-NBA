@@ -19,7 +19,6 @@ const ThanksText = (props) => {
                 {props.children}
             </div>
         </Anime>
-
     )
 };
 

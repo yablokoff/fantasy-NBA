@@ -23,9 +23,8 @@ const LoginPage = (props) => {
                     <div className="login-form-wrapper">
                         <div className="container">
                             <LoginPreview
-                                text="Free to enter. Winner receives a shoutout,
-                                tag and a chance at a free hoodie!" />
-
+                                text={"Free to enter. Winner receives a shoutout,\n" +
+                                "tag and a chance at a free hoodie!"} />
                             <LoginForm next={next} />
                         </div>
                     </div>
