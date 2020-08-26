@@ -24,70 +24,37 @@
 }
 
 // form
-.form-wrapper {
+.login-form-wrapper {
 
-  .form-content {
-    perspective: 2000px;
+  .login-preview-wrapper {
+    max-width: 680px;
+    margin-left: auto;
+    margin-right: auto;
 
-    .form-label {
-      font-weight: bold;
-      text-transform: uppercase;
-      background: linear-gradient(to right, $white, $white) center bottom no-repeat;
-      background-size: 3px 3px;
-      //background-size: 260px 2px;
-      transform-style: preserve-3d;
-      @include vpad(30px, 32px);
-      font-size: rem(37);
-      @include for-tablet-portrait-up() {
-        @include vpad(40px, 42px);
-        font-size: rem(44);
-      }
-      @include for-tablet-landscape-up() {
-        @include vpad(60px, 62px);
-        font-size: rem(50);
-      }
+    margin-top: 30px;
+    @include for-tablet-portrait-up() {
+      margin-top: 40px;
+    }
+    @include for-tablet-landscape-up() {
+      margin-top: 60px;
     }
 
-    .awards {
-      margin: 0;
-      padding: 30px 0;
-      list-style: none;
-      counter-reset: item;
+    .login-preview {
+
+    }
+
+    .login-preview-label {
+      margin: 20px 0 30px;
       font-weight: bold;
       font-size: rem(16);
       transform-style: preserve-3d;
 
       @include for-tablet-portrait-up() {
         font-size: rem(18);
-        padding: 40px 0;
+        margin: 30px 0 40px;
       }
       @include for-tablet-landscape-up() {
         font-size: rem(20);
-      }
-
-      .award {
-        margin-bottom: 5px;
-        &:last-of-type {
-          margin-bottom: 0;
-        }
-
-        &:before {
-          counter-increment: item;
-          content: counter(item)"th PLACE: ";
-        }
-        &:nth-child(10n+1):not(:nth-child(11)):before {
-          content: counter(item)"st PLACE: ";
-        }
-        &:nth-child(10n+2):not(:nth-child(12)):before {
-          content: counter(item)"nd PLACE: ";
-        }
-        &:nth-child(10n+3):not(:nth-child(13)):before {
-          content: counter(item)"rd PLACE: ";
-        }
-      }
-
-      .award-label {
-        text-transform: uppercase;
       }
     }
   }

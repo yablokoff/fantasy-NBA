@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 
 import Page from "../components/Page";
 import LoginLabel from "../components/LoginLabel";
-import LoginAwards from "../components/LoginAwards";
+import LoginPreview from "../components/LoginPreview";
 import LoginForm from "../components/LoginForm";
 import routes from "../constants/routes";
 import { isAuthenticated } from "../storage/auth";
@@ -20,9 +20,11 @@ const LoginPage = (props) => {
                 <React.Fragment>
                     <LoginLabel title="frank michael smith's" />
 
-                    <div className="form-wrapper">
+                    <div className="login-form-wrapper">
                         <div className="container">
-                            <LoginAwards title="5 card draw" />
+                            <LoginPreview
+                                text="Free to enter. Winner receives a shoutout,
+                                tag and a chance at a free hoodie!" />
 
                             <LoginForm next={next} />
                         </div>
