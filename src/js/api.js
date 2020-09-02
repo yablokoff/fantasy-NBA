@@ -17,7 +17,7 @@ export const axiosAPI = axios.create({
     baseURL: baseURL,
     timeout: 5000,
     headers: {
-        Authorization: "Bearer keyQcY7BJrFix6otc",
+        Authorization: "Bearer keyMZ0LJwZkwSeJuQ",
         "Content-Type": "application/json",
         accept: "application/json",
     },
