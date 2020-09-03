@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import PropTypes from "prop-types";
 import { useDispatch, useSelector } from "react-redux";
 import { CSSTransition } from "react-transition-group";
 
@@ -8,7 +9,6 @@ import { showPreloader, hidePreloader, loadCards, setCards } from "../actions";
 import { fetchedCards, selectedCards } from "../storage/cards";
 import { formattingCardsResponse } from "../api";
 import { loadImages } from "../utils";
-import PropTypes from "prop-types";
 
 
 const appearAnimationDuration = 2000;
@@ -116,7 +116,8 @@ const MainList = (props) => {
                 unmountOnExit>
                 <div className="list-item">
                     <div className="rules">
-                        {"select 3 &\u00A0discard 2"}
+                        <div className="rule-1">{"most total pts\nscored wins"}</div>
+                        <div className="rule-2">{"select 3\n&\u00A0discard 2"}</div>
                     </div>
                     <div className="button-wrapper">
                         <button type="button"

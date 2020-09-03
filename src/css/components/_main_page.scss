@@ -117,22 +117,39 @@
   .rules {
     font-weight: bold;
     text-transform: uppercase;
+    white-space: pre;
     margin-left: 10px;
     margin-bottom: 15px;
-    max-width: 130px;
     line-height: 1.2;
-    font-size: rem(16);
+    font-size: rem(14);
+    @include media_interval(420px, $media-tablet-portrait) {
+      font-size: rem(16);
+    }
     @include for-tablet-portrait-up() {
       font-size: rem(18);
     }
     @include for-tablet-landscape-up() {
       font-size: rem(20);
     }
+    @include media_interval(0, 375px) {
+      margin-bottom: 10px;
+    }
+
+    .rule-1 {
+      color: $green;
+      margin-bottom: 5px;
+    }
+    .rule-2 {
+      max-width: 130px;
+    }
   }
 
   .button-wrapper {
     .btn {
       padding: 60px 42px;
+      @include media_interval(0, 375px) {
+        padding: 42px 28px;
+      }
 
       @include for-phone-only() {
         font-size: rem(16);
