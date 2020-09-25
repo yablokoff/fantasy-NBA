@@ -51,7 +51,14 @@ const ThanksPage = () => {
 
                     <ThanksText delay={700}>
                         <>
-                            {"winner announced\non frank's instagram\nstory after the game"}
+                            {"winner announced\non "}
+                            <a className="link"
+                               target="_blank"
+                               title="FRANK MICHAEL SMITH'S"
+                               href="https://www.instagram.com/frankmichaelsmith_/">
+                                {"frank's instagram"}
+                            </a>
+                            {"\nstory after the game"}
                         </>
                     </ThanksText>
 
