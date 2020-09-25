@@ -7,7 +7,7 @@ export default () => {
     return (
         <div className="empty-label">
             <SplitText
-                text="Hey, sadly no NBA games today, come back another day."
+                text="Hey, sadly no contests today, come back another day."
                 duration={650}
                 onEnterAnimation={{
                     opacity: [0, 1],

@@ -24,7 +24,7 @@ const LoginPage = (props) => {
                         <div className="container">
                             <LoginPreview
                                 text={"Free to enter. Winner receives $20.\n" +
-                                "2nd & 3rd receive shoutouts and tags!"} />
+                                "The top 5 receive shoutouts and tags!"} />
                             <LoginForm next={next} />
                         </div>
                     </div>
