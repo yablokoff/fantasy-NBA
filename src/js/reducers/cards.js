@@ -26,7 +26,7 @@ const cardsReducer = (state = initialState, action) => {
                 error: true
             };
         }
-        case ActionTypes.LOAD_CARDS_FULFILLED:
+        case ActionTypes.LOAD_CARDS_FULFILLED: {
             const result = formattingCardsResponse(action.payload.data);
 
             // sort according to daily players fetch
@@ -45,6 +45,7 @@ const cardsReducer = (state = initialState, action) => {
                 cards: result,
                 error: false
             };
+        }
         default:
             return state;
     }

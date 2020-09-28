@@ -29,7 +29,7 @@ export default (state = initialState, action) => {
                 error: true
             };
         }
-        case ActionTypes.LOAD_DAILY_PLAYERS_FULFILLED:
+        case ActionTypes.LOAD_DAILY_PLAYERS_FULFILLED: {
             // полное говно, но отсюда удобнее всего сохранить в стораж
             const formattedData = formattingDailyPlayersResponse(action.payload.data);
 
@@ -61,6 +61,7 @@ export default (state = initialState, action) => {
                 isFetching: false,
                 error: false
             };
+        }
         default:
             return state;
     }

@@ -37,7 +37,6 @@ export const hidePreloader = () => (dispatch, getState) => {
     })
 };
 
-
 // user
 export const loginUser = (Email, Instagram, Phone) => dispatch => {
     const user = getUser();
@@ -49,6 +48,21 @@ export const loginUser = (Email, Instagram, Phone) => dispatch => {
     return dispatch({
         type: ActionTypes.LOGIN,
         payload: axiosAPI.post(urls.users, {fields: { Email, Instagram, Phone }})
+    });
+};
+
+// content
+export const loadContent = () => (dispatch, getState) => {
+    const state = getState();
+    if (state.content.isFetching) {
+        return Promise.reject(null)
+    }
+
+    return dispatch({
+        type: ActionTypes.LOAD_CONTENT,
+        payload: axiosAPI.get(urls.content, {
+            maxRecords: 1
+        })
     });
 };
 

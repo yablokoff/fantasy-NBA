@@ -1,8 +1,14 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import Anime from "@mollycule/react-anime";
 
 
-export default () => {
+import { createMarkup } from "../utils";
+
+
+const MainEmpty = () => {
+    const content = useSelector(state => state.content);
+
     return (
         <Anime
             in
@@ -14,18 +20,10 @@ export default () => {
                 easing: "easeInOutSine"
             }}>
 
-            <div className="empty-label">
-                {"Hey! The contests are either live or unavailable today. Look out for updates on "}
-
-                <a className="link"
-                   target="_blank"
-                   title="FRANK MICHAEL SMITH'S"
-                   href="https://www.instagram.com/frankmichaelsmith_/">
-                    {"Frank's Instagram"}
-                </a>
-
-                {"."}
-            </div>
+            <div className="empty-label text-markdown"
+                 dangerouslySetInnerHTML={createMarkup(content.empty_page)} />
         </Anime>
     )
 };
+
+export default MainEmpty;

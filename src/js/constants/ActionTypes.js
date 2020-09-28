@@ -11,6 +11,12 @@ export const LOGIN_PENDING = `LOGIN_${ActionType.Pending}`;
 export const LOGIN_FULFILLED = `LOGIN_${ActionType.Fulfilled}`;
 export const LOGIN_REJECTED = `LOGIN_${ActionType.Rejected}`;
 
+// content
+export const LOAD_CONTENT = 'LOAD_CONTENT';
+export const LOAD_CONTENT_PENDING = `LOAD_CONTENT_${ActionType.Pending}`;
+export const LOAD_CONTENT_FULFILLED = `LOAD_CONTENT_${ActionType.Fulfilled}`;
+export const LOAD_CONTENT_REJECTED = `LOAD_CONTENT_${ActionType.Rejected}`;
+
 // daily players
 export const LOAD_DAILY_PLAYERS = 'LOAD_DAILY_PLAYERS';
 export const LOAD_DAILY_PLAYERS_PENDING = `LOAD_DAILY_PLAYERS_${ActionType.Pending}`;

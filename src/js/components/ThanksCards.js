@@ -3,7 +3,7 @@ import anime from "animejs";
 import Anime from "@mollycule/react-anime";
 
 
-export default ({ cards }) => {
+const ThanksCards = ({ cards }) => {
     return (
         <div className="selected-cards">
             <Anime
@@ -30,3 +30,5 @@ export default ({ cards }) => {
         </div>
     )
 };
+
+export default ThanksCards;

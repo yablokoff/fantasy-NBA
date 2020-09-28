@@ -9,12 +9,13 @@ import ThanksCards from "../components/ThanksCards";
 import { LOAD_CARDS_FULFILLED } from "../constants/ActionTypes";
 import { showPreloader, hidePreloader, loadCards } from "../actions";
 import { formattingCardsResponse } from "../api";
-import { loadImages } from "../utils";
+import { createMarkup, loadImages } from "../utils";
 import routes from "../constants/routes";
 
 
 const ThanksPage = () => {
     const dispatch = useDispatch();
+    const content = useSelector(state => state.content);
     const { ids: selected_ids } = useSelector(state => state.selectedCardsIDs);
     const hasSelected = selected_ids.length;
     let { cards } = useSelector(state => state.cards);
@@ -47,32 +48,14 @@ const ThanksPage = () => {
         <Page>
             <div className="thanks-wrapper">
                 <div className="container">
-                    <ThanksLabel title="thanks for entering" />
+                    <ThanksLabel title={content.thanks_label} />
 
                     <ThanksText delay={700}>
-                        <>
-                            {"winner announced\non "}
-                            <a className="link"
-                               target="_blank"
-                               title="FRANK MICHAEL SMITH'S"
-                               href="https://www.instagram.com/frankmichaelsmith_/">
-                                {"frank's instagram"}
-                            </a>
-                            {"\nstory after the game"}
-                        </>
+                        <div className="text-markdown" dangerouslySetInnerHTML={createMarkup(content.thanks_block_1)} />
                     </ThanksText>
 
                     <ThanksText delay={800}>
-                        <>
-                            {"must be following\n"}
-                            <a className="link"
-                               target="_blank"
-                               title="SBD Play"
-                               href="https://www.instagram.com/sbd_play/">
-                                {"@SBD_PLAY"}
-                            </a>
-                            {"\non instagram to win"}
-                        </>
+                        <div className="text-markdown" dangerouslySetInnerHTML={createMarkup(content.thanks_block_2)} />
                     </ThanksText>
 
                     {cards.length && <ThanksCards cards={cards} />}

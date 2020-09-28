@@ -1,4 +1,10 @@
 import axios from "axios";
+import marked from "marked";
+
+import renderer from "./renderer";
+
+
+marked.use({ renderer });
 
 
 const baseURL = (() => {
@@ -38,6 +44,22 @@ export const urls = {
     daily: 'Daily players',
     sets: 'Sets',
     users: 'Users',
+    content: 'Content',
+};
+
+export const formattingContentResponse = (data) => {
+    const { records } = data;
+    if (!records.length) return
+
+    const { fields } = records[0];
+    return {
+        login_label: fields["login_label"],
+        login_text: fields["login_text"],
+        empty_page: marked(fields["empty_page"]),
+        thanks_label: fields["thanks_label"],
+        thanks_block_1: marked(fields["thanks_block_1"]),
+        thanks_block_2: marked(fields["thanks_block_2"])
+    }
 };
 
 export const formattingDailyPlayersResponse = (data) => {

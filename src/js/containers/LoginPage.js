@@ -12,19 +12,18 @@ import { isAuthenticated } from "../storage/auth";
 
 const LoginPage = (props) => {
     const { from: { pathname: next = routes.home } = {} } = props.location.state || {};
+
     return (
         isAuthenticated() ?
             <Redirect to={next}/>
             :
             <Page>
                 <React.Fragment>
-                    <LoginLabel title="frank michael smith's" />
+                    <LoginLabel />
 
                     <div className="login-form-wrapper">
                         <div className="container">
-                            <LoginPreview
-                                text={"Free to enter. Winner receives $20.\n" +
-                                "The top 5 receive shoutouts and tags!"} />
+                            <LoginPreview />
                             <LoginForm next={next} />
                         </div>
                     </div>

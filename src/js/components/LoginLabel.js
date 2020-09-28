@@ -1,15 +1,19 @@
-import React from "react";
 import anime from "animejs";
+import React from "react";
+import { useSelector } from "react-redux";
+
 import SplitText from "./SplitText";
 
 
-export default ({ title }) => {
+const LoginLabel = () => {
+    const content = useSelector(state => state.content);
+
     return (
         <div className="head-label-wrapper">
             <div className="container">
                 <div className="head-label center-text">
                     <SplitText
-                        text={title}
+                        text={content.login_label}
                         duration={650}
                         onEnterAnimation={{
                             opacity: [0, 1],
@@ -24,3 +28,5 @@ export default ({ title }) => {
         </div>
     )
 };
+
+export default LoginLabel;

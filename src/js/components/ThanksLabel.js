@@ -1,9 +1,10 @@
 import React from "react";
 import anime from "animejs";
+
 import SplitText from "./SplitText";
 
 
-export default ({ title }) => {
+const ThanksLabel = ({ title }) => {
     return (
         <div className="thanks-label center-text">
             <SplitText
@@ -20,3 +21,5 @@ export default ({ title }) => {
         </div>
     )
 };
+
+export default ThanksLabel;

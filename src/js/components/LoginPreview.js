@@ -1,4 +1,5 @@
 import React from "react";
+import { useSelector } from "react-redux";
 // import anime from "animejs";
 import Anime from "@mollycule/react-anime";
 
@@ -8,7 +9,9 @@ import preview from "img/preview2.png";
 
 const delay = 600;
 
-export default ({ text }) => {
+const LoginPreview = () => {
+    const content = useSelector(state => state.content);
+
     return (
         <div className="login-preview-wrapper">
             <Anime
@@ -35,9 +38,11 @@ export default ({ text }) => {
                     delay: delay
                 }}>
                 <div className="login-preview-label center-text">
-                    {text}
+                    {content.login_text}
                 </div>
             </Anime>
         </div>
     )
 };
+
+export default LoginPreview;

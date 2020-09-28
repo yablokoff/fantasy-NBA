@@ -37,3 +37,7 @@ export const loadImages = sources => {
     }
     return Promise.all(sources.map(loadImage));
 };
+
+export function createMarkup(html) {
+  return ({ __html: html.trim() })
+}
