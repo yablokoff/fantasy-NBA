@@ -77,7 +77,6 @@ $preview_h: 365;
       line-height: 1.5;
 
       @include media_interval(420px, 0) {
-        white-space: pre;
         font-size: rem(18);
       }
       @include for-tablet-portrait-up() {
@@ -85,7 +84,7 @@ $preview_h: 365;
         margin: 20px auto 35px;
       }
       @include for-tablet-landscape-up() {
-        font-size: rem(28);
+        font-size: rem(27);
       }
     }
   }

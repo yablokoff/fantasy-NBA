@@ -118,8 +118,7 @@
     font-weight: bold;
     text-transform: uppercase;
     white-space: pre;
-    margin-left: 10px;
-    margin-bottom: 15px;
+    margin: 10px 10px 15px;
     line-height: 1.2;
     font-size: rem(14);
     @include media_interval(420px, $media-tablet-portrait) {
@@ -132,6 +131,7 @@
       font-size: rem(20);
     }
     @include media_interval(0, 375px) {
+      margin-top: 4px;
       margin-bottom: 10px;
     }
 
@@ -140,7 +140,7 @@
       margin-bottom: 5px;
     }
     .rule-2 {
-      max-width: 130px;
+
     }
   }
 

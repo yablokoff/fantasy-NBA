@@ -8,7 +8,7 @@ import { CARDS_SHOW_COUNT, CARDS_SELECT_COUNT } from "../constants/defaults";
 import { showPreloader, hidePreloader, loadCards, setCards } from "../actions";
 import { fetchedCards, selectedCards } from "../storage/cards";
 import { formattingCardsResponse } from "../api";
-import { loadImages } from "../utils";
+import { createMarkup, loadImages } from "../utils";
 
 
 const appearAnimationDuration = 2000;
@@ -23,6 +23,7 @@ const animationClasses = {
 
 const MainList = (props) => {
     const dispatch = useDispatch();
+    const content = useSelector(state => state.content);
     const { cards } = useSelector(store => store.cards);
     const [showCards, setShowCards] = useState(false);
 
@@ -116,8 +117,8 @@ const MainList = (props) => {
                 unmountOnExit>
                 <div className="list-item">
                     <div className="rules">
-                        <div className="rule-1">{"most total pts\nscored wins"}</div>
-                        <div className="rule-2">{"select 3\n&\u00A0discard 2"}</div>
+                        <div className="rule-1" dangerouslySetInnerHTML={createMarkup(content.cards_page_green)} />
+                        <div className="rule-2" dangerouslySetInnerHTML={createMarkup(content.cards_page_gray)} />
                     </div>
                     <div className="button-wrapper">
                         <button type="button"

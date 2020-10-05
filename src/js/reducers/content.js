@@ -7,6 +7,8 @@ const initialState = {
     login_text: 'Free to enter. Winner receives $20.\n' +
         'The top 5 receive shoutouts and tags!',
     empty_page: 'Hey! The contests are either live or unavailable today. Look out for updates on Frank\'s Instagram.',
+    cards_page_green: 'most total pts\nscored wins',
+    cards_page_gray: 'select 3\n&\u00A0discard 2',
     thanks_label: 'thanks for entering',
     thanks_block_1: 'winner announced\n' +
         'on frank`s instagram\n' +

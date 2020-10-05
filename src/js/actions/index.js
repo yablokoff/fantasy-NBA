@@ -74,8 +74,8 @@ export const loadDailyPlayers = () => (dispatch, getState) => {
     }
 
     const filter = `Date=TODAY()`;
-    // const now = dayjs.utc();
-    // const filter = `Date=${now.format(QUERY_DATE_FORMAT)}`;
+    // const test = dayjs.utc('2020-10-04');
+    // const filter = `Date="${test.format(QUERY_DATE_FORMAT)}"`;
 
     return dispatch({
         type: ActionTypes.LOAD_DAILY_PLAYERS,
