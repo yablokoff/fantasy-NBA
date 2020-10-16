@@ -89,7 +89,7 @@ $preview_h: 365;
     }
   }
 
-  .form {
+  .login-form {
     max-width: 300px;
     margin-left: auto;
     margin-right: auto;
@@ -103,6 +103,29 @@ $preview_h: 365;
 
       .btn {
         transform-style: preserve-3d;
+      }
+    }
+  }
+
+  .login-bottom-wrapper {
+    max-width: 420px;
+    margin-left: auto;
+    margin-right: auto;
+
+    margin-top: 40px;
+    @include for-tablet-portrait-up() {
+      max-width: 540px;
+    }
+    @include for-tablet-landscape-up() {
+      margin-top: 65px;
+      max-width: 660px;
+    }
+
+    .login-consent {
+      line-height: 1.3;
+      font-size: rem(13);
+      @include for-tablet-portrait-up() {
+        font-size: rem(14);
       }
     }
   }

@@ -6,6 +6,7 @@ const initialState = {
     login_label: 'frank michael smith\'s',
     login_text: 'Free to enter. Winner receives $20.\n' +
         'The top 5 receive shoutouts and tags!',
+    login_consent: 'By participating, you consent to receive recurring autodialed SMS/MMS promotional messages. No purchase required. Msg&data rates may apply. Reply HELP for help, or STOP to end.',
     empty_page: 'Hey! The contests are either live or unavailable today. Look out for updates on Frank\'s Instagram.',
     cards_page_green: 'most total pts\nscored wins',
     cards_page_gray: 'select 3\n&\u00A0discard 2',

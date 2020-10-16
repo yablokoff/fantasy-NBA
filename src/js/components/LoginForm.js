@@ -123,7 +123,7 @@ const LoginForm = ({ next }) => {
         <Form
             onSubmit={onSubmit}
             render={({ handleSubmit, submitting, values }) => (
-                <form className="form" onSubmit={handleSubmit}>
+                <form className="login-form" onSubmit={handleSubmit}>
                     <div className="form-fields">
                         <Field name="email"
                                placeholder="Email"

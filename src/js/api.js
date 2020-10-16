@@ -55,6 +55,7 @@ export const formattingContentResponse = (data) => {
     return {
         login_label: fields["login_label"],
         login_text: fields["login_text"],
+        login_consent: marked(fields["login_consent"]),
         empty_page: marked(fields["empty_page"]),
         cards_page_green: marked(fields["cards_page_green"]),
         cards_page_gray: marked(fields["cards_page_gray"]),

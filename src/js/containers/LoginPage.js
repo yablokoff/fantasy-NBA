@@ -6,6 +6,7 @@ import Page from "../components/Page";
 import LoginLabel from "../components/LoginLabel";
 import LoginPreview from "../components/LoginPreview";
 import LoginForm from "../components/LoginForm";
+import LoginBottom from "../components/LoginBottom";
 import routes from "../constants/routes";
 import { isAuthenticated } from "../storage/auth";
 
@@ -25,6 +26,7 @@ const LoginPage = (props) => {
                         <div className="container">
                             <LoginPreview />
                             <LoginForm next={next} />
+                            <LoginBottom />
                         </div>
                     </div>
                 </React.Fragment>
