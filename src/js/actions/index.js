@@ -6,7 +6,7 @@ import { CARDS_SHOW_COUNT, QUERY_DATE_FORMAT } from "../constants/defaults";
 import { fetchedCards } from "../storage/cards";
 
 import { axiosAPI, urls } from "../api";
-import { getUser } from "../storage/auth";
+import { getUser, logout } from "../storage/auth";
 
 
 dayjs.extend(utc);
@@ -38,6 +38,20 @@ export const hidePreloader = () => (dispatch, getState) => {
 };
 
 // user
+export const loadUser = (userId) => (dispatch, getState) => {
+    const state = getState();
+    const user = state.user.response;
+
+    if (user) {
+        return Promise.resolve(user)
+    }
+
+    return dispatch({
+        type: ActionTypes.LOAD_USER,
+        payload: axiosAPI.get(`${urls.users}/${userId}`)
+    });
+};
+
 export const loginUser = (Email, Instagram, Phone) => dispatch => {
     const user = getUser();
 
@@ -47,9 +61,20 @@ export const loginUser = (Email, Instagram, Phone) => dispatch => {
 
     return dispatch({
         type: ActionTypes.LOGIN,
-        payload: axiosAPI.post(urls.users, {fields: { Email, Instagram, Phone }})
+        payload: axiosAPI.post(urls.users, {
+            fields: { Email, Instagram, Phone }
+        })
     });
 };
+
+export const logoutUser = () => dispatch => {
+    logout();
+
+    return dispatch({
+        type: ActionTypes.LOGOUT
+    });
+};
+
 
 // content
 export const loadContent = () => (dispatch, getState) => {

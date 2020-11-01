@@ -6,10 +6,17 @@ export const SHOW_PRELOADER = 'SHOW_PRELOADER';
 export const HIDE_PRELOADER = 'HIDE_PRELOADER';
 
 // user
+export const LOAD_USER = 'LOAD_USER';
+export const LOAD_USER_PENDING = `LOAD_USER_${ActionType.Pending}`;
+export const LOAD_USER_FULFILLED = `LOAD_USER_${ActionType.Fulfilled}`;
+export const LOAD_USER_REJECTED = `LOAD_USER_${ActionType.Rejected}`;
+
 export const LOGIN = 'LOGIN';
 export const LOGIN_PENDING = `LOGIN_${ActionType.Pending}`;
 export const LOGIN_FULFILLED = `LOGIN_${ActionType.Fulfilled}`;
 export const LOGIN_REJECTED = `LOGIN_${ActionType.Rejected}`;
+
+export const LOGOUT = 'LOGOUT';
 
 // content
 export const LOAD_CONTENT = 'LOAD_CONTENT';

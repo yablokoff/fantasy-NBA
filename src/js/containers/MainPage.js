@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React, { useEffect } from "react";
 import { Redirect } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -14,10 +14,11 @@ import routes from "../constants/routes";
 
 const MainPage = () => {
     const dispatch = useDispatch();
+    const { isFetching } = useSelector(state => state.fetchedCardsIDs);
     const { ids: fetched_ids } = useSelector(state => state.fetchedCardsIDs);
     const { ids: selected_ids } = useSelector(state => state.selectedCardsIDs);
-    const hasFetched = fetched_ids.length;
-    const hasSelected = selected_ids.length;
+    const hasFetched = Boolean(fetched_ids.length);
+    const hasSelected = Boolean(selected_ids.length);
 
     useEffect(() => {
         if (!hasSelected && !hasFetched) {
@@ -25,7 +26,7 @@ const MainPage = () => {
             dispatch(
                 loadDailyPlayers()
             ).then(
-                ({value, action}) => {
+                ({ value, action }) => {
                     if (action && action.type === LOAD_DAILY_PLAYERS_FULFILLED) {
                         const formattedData = formattingDailyPlayersResponse(value.data);
                         const count = formattedData.length;
@@ -45,10 +46,13 @@ const MainPage = () => {
         hasSelected ?
             <Redirect to={routes.thanks} />
             :
-            <Page>
+            <Page isPageLoaded={hasFetched}>
                 <div className="cards-wrapper">
                     <div className="container">
-                        {hasFetched ? <MainList fetched_ids={fetched_ids} /> : <MainEmpty />}
+                        {hasFetched ?
+                            <MainList fetched_ids={fetched_ids} />
+                            : isFetching ? null
+                            : <MainEmpty />}
                     </div>
                 </div>
             </Page>

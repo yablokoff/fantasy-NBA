@@ -117,8 +117,10 @@ const MainList = (props) => {
                 unmountOnExit>
                 <div className="list-item">
                     <div className="rules">
-                        <div className="rule-1" dangerouslySetInnerHTML={createMarkup(content.cards_page_green)} />
-                        <div className="rule-2" dangerouslySetInnerHTML={createMarkup(content.cards_page_gray)} />
+                        <div className="rule-1"
+                             dangerouslySetInnerHTML={createMarkup(content.cards_page_green)} />
+                        <div className="rule-2"
+                             dangerouslySetInnerHTML={createMarkup(content.cards_page_gray)} />
                     </div>
                     <div className="button-wrapper">
                         <button type="button"

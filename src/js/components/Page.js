@@ -15,7 +15,9 @@ const Page = (props) => {
             dispatch(
                 loadContent()
             ).then(() => {
-                dispatch(hidePreloader());
+                if (props.isPageLoaded) {
+                    dispatch(hidePreloader());
+                }
             });
         }
     }, []);
@@ -23,14 +25,19 @@ const Page = (props) => {
     return (
         <div id="app-page">
             <main id="app-main">
-                {content.isFetching ? null : props.children}
+                {content.isFetching || !content.response ? null : props.children}
             </main>
         </div>
     );
 };
 
 Page.propTypes = {
-    children: PropTypes.element.isRequired
+    children: PropTypes.element.isRequired,
+    isPageLoaded: PropTypes.bool
+};
+
+Page.defaultProps = {
+  isPageLoaded: true
 };
 
 export default Page;

@@ -17,13 +17,14 @@ const ThanksPage = () => {
     const dispatch = useDispatch();
     const content = useSelector(state => state.content);
     const { ids: selected_ids } = useSelector(state => state.selectedCardsIDs);
-    const hasSelected = selected_ids.length;
     let { cards } = useSelector(state => state.cards);
     cards = cards.filter(card => selected_ids.includes(card.id));
+    const hasSelected = Boolean(selected_ids.length);
+    const hasLoadedCards = Boolean(cards.length);
 
     useEffect(() => {
-        // в случае когда юзер заходит на сайт повторно после выбора карт
-        if (hasSelected && !cards.length) {
+        // запрос за картами в случае когда юзер заходит на сайт повторно после выбора карт
+        if (hasSelected && !hasLoadedCards) {
             dispatch(showPreloader());
             dispatch(
                 loadCards(selected_ids)
@@ -45,17 +46,19 @@ const ThanksPage = () => {
     return (!hasSelected ? (
         <Redirect to={routes.home} />
     ) : (
-        <Page>
+        <Page isPageLoaded={hasLoadedCards}>
             <div className="thanks-wrapper">
                 <div className="container">
                     <ThanksLabel title={content.thanks_label} />
 
                     <ThanksText delay={700}>
-                        <div className="text-markdown" dangerouslySetInnerHTML={createMarkup(content.thanks_block_1)} />
+                        <div className="text-markdown"
+                             dangerouslySetInnerHTML={createMarkup(content.thanks_block_1)} />
                     </ThanksText>
 
                     <ThanksText delay={800}>
-                        <div className="text-markdown" dangerouslySetInnerHTML={createMarkup(content.thanks_block_2)} />
+                        <div className="text-markdown"
+                             dangerouslySetInnerHTML={createMarkup(content.thanks_block_2)} />
                     </ThanksText>
 
                     {cards.length && <ThanksCards cards={cards} />}
