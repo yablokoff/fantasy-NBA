@@ -14,8 +14,7 @@ import routes from "../constants/routes";
 
 const MainPage = () => {
     const dispatch = useDispatch();
-    const { isFetching } = useSelector(state => state.fetchedCardsIDs);
-    const { ids: fetched_ids } = useSelector(state => state.fetchedCardsIDs);
+    const { ids: fetched_ids, isFetching } = useSelector(state => state.fetchedCardsIDs);
     const { ids: selected_ids } = useSelector(state => state.selectedCardsIDs);
     const hasFetched = Boolean(fetched_ids.length);
     const hasSelected = Boolean(selected_ids.length);

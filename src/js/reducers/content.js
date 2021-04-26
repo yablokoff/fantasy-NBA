@@ -41,7 +41,9 @@ const contentReducer = (state=initialState, action) => {
         case ActionTypes.LOAD_CONTENT_FULFILLED: {
             const data = action.payload.data;
             const result = formattingContentResponse(data);
+
             return {
+                ...state,
                 ...result,
                 response: data,
                 isFetching: false,

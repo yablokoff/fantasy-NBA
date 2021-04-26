@@ -1,6 +1,7 @@
 import axios from "axios";
 import marked from "marked";
 
+import { removeEmpty } from "./utils";
 import renderer from "./renderer";
 
 
@@ -15,6 +16,7 @@ const baseURL = (() => {
             return '';
         default:
             return 'https://api.airtable.com/v0/appLEgyLGr8Xpum8P/';
+            // return 'https://api.airtable.com/v0/app9n7ewo4p9CrxlC/'; // my
     }
 })();
 
@@ -24,6 +26,7 @@ export const axiosAPI = axios.create({
     timeout: 5000,
     headers: {
         Authorization: "Bearer keyMZ0LJwZkwSeJuQ",
+        // Authorization: "Bearer keyQcY7BJrFix6otc", // my
         "Content-Type": "application/json",
         accept: "application/json",
     },
@@ -52,17 +55,18 @@ export const formattingContentResponse = (data) => {
     if (!records.length) return
 
     const { fields } = records[0];
-    return {
+
+    return removeEmpty({
         login_label: fields["login_label"],
         login_text: fields["login_text"],
-        login_consent: marked(fields["login_consent"]),
-        empty_page: marked(fields["empty_page"]),
-        cards_page_green: marked(fields["cards_page_green"]),
-        cards_page_gray: marked(fields["cards_page_gray"]),
+        login_consent: fields["login_consent"] && marked(fields["login_consent"]),
+        empty_page: fields["empty_page"] && marked(fields["empty_page"]),
+        cards_page_green: fields["cards_page_green"] && marked(fields["cards_page_green"]),
+        cards_page_gray: fields["cards_page_gray"] && marked(fields["cards_page_gray"]),
         thanks_label: fields["thanks_label"],
-        thanks_block_1: marked(fields["thanks_block_1"]),
-        thanks_block_2: marked(fields["thanks_block_2"])
-    }
+        thanks_block_1: fields["thanks_block_1"] && marked(fields["thanks_block_1"]),
+        thanks_block_2: fields["thanks_block_2"] && marked(fields["thanks_block_2"])
+    })
 };
 
 export const formattingDailyPlayersResponse = (data) => {

@@ -2,7 +2,7 @@ import dayjs from "dayjs";
 import utc from "dayjs/plugin/utc";
 
 import * as ActionTypes from "../constants/ActionTypes";
-import { CARDS_SHOW_COUNT, QUERY_DATE_FORMAT } from "../constants/defaults";
+import { CARDS_SHOW_COUNT, QUERY_DATE_FORMAT, TIME_ZONE } from "../constants/defaults";
 import { fetchedCards } from "../storage/cards";
 
 import { axiosAPI, urls } from "../api";
@@ -99,6 +99,7 @@ export const loadDailyPlayers = () => (dispatch, getState) => {
     }
 
     const filter = `Date=TODAY()`;
+    // const filter = `Date=SET_TIMEZONE(TODAY(),"${TIME_ZONE}")`; // 4/26/2021 00:00 -> 4/25/2021 17:00
     // const test = dayjs.utc('2020-10-04');
     // const filter = `Date="${test.format(QUERY_DATE_FORMAT)}"`;
 
@@ -156,7 +157,7 @@ export const setCards = (selected_ids, bitmap) => (dispatch, getState) => {
         payload: axiosAPI.post(urls.sets, {
             fields: {
                 'User': [user], // API require array
-                'Players_m2m': fetchedData.pd_ids.filter((id, i) => bitmap[i])
+                'Players_m2m': fetchedData.dp_ids.filter((id, i) => bitmap[i])
             }
         }),
         meta: {

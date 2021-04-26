@@ -46,11 +46,11 @@ export default (state = initialState, action) => {
                     rangeMax: count - 1
                 });
 
-                const pd_ids = formattedData.map(pd => pd.id);
+                const dp_ids = formattedData.map(pd => pd.id);
                 const cards_ids = formattedData.map(pd => pd.card_id);
                 filtered_cards_ids = cards_ids.filter((id, i) => indexes.includes(i));
                 fetchedCards.set({
-                    pd_ids: pd_ids.filter((id, i) => indexes.includes(i)),
+                    dp_ids: dp_ids.filter((id, i) => indexes.includes(i)),
                     card_ids: filtered_cards_ids,
                 });
             }
