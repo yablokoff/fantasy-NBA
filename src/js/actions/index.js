@@ -98,10 +98,12 @@ export const loadDailyPlayers = () => (dispatch, getState) => {
         return Promise.reject(null)
     }
 
-    const filter = `Date=TODAY()`;
-    // const filter = `Date=SET_TIMEZONE(TODAY(),"${TIME_ZONE}")`; // 4/26/2021 00:00 -> 4/25/2021 17:00
-    // const test = dayjs.utc('2020-10-04');
-    // const filter = `Date="${test.format(QUERY_DATE_FORMAT)}"`;
+    const filter = `_active=1`;
+    // const filter = `Date=TODAY()`;
+    // const filter = `Date=NOW()`;
+    // const filter = `Date=SET_TIMEZONE(TODAY(),"${TIME_ZONE}")`;
+    // const filter = `Date=DATETIME_FORMAT(SET_TIMEZONE(TODAY(),"${TIME_ZONE}"), "MM/DD/YYYY")`;
+    // const filter = `Date="${dayjs.utc('2020-10-04').format(QUERY_DATE_FORMAT)}"`;
 
     return dispatch({
         type: ActionTypes.LOAD_DAILY_PLAYERS,

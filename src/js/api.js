@@ -15,8 +15,8 @@ const baseURL = (() => {
         case 'test':
             return '';
         default:
-            return 'https://api.airtable.com/v0/appLEgyLGr8Xpum8P/';
-            // return 'https://api.airtable.com/v0/app9n7ewo4p9CrxlC/'; // my
+            // return 'https://api.airtable.com/v0/appLEgyLGr8Xpum8P/';
+            return 'https://api.airtable.com/v0/app9n7ewo4p9CrxlC/'; // my
     }
 })();
 
@@ -25,8 +25,8 @@ export const axiosAPI = axios.create({
     baseURL: baseURL,
     timeout: 5000,
     headers: {
-        Authorization: "Bearer keyMZ0LJwZkwSeJuQ",
-        // Authorization: "Bearer keyQcY7BJrFix6otc", // my
+        // Authorization: "Bearer keyMZ0LJwZkwSeJuQ",
+        Authorization: "Bearer keyQcY7BJrFix6otc", // my
         "Content-Type": "application/json",
         accept: "application/json",
     },
