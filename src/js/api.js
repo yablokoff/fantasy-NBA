@@ -7,26 +7,25 @@ import renderer from "./renderer";
 
 marked.use({ renderer });
 
+const environment = process.env.NODE_ENV;
 
 const baseURL = (() => {
-    const environment = process.env.NODE_ENV;
-
     switch (environment) {
         case 'test':
             return '';
-        default:
-            // return 'https://api.airtable.com/v0/appLEgyLGr8Xpum8P/';
+        case 'development':
             return 'https://api.airtable.com/v0/app9n7ewo4p9CrxlC/'; // my
+        default:
+            return 'https://api.airtable.com/v0/appLEgyLGr8Xpum8P/';
     }
 })();
-
 
 export const axiosAPI = axios.create({
     baseURL: baseURL,
     timeout: 5000,
     headers: {
-        // Authorization: "Bearer keyMZ0LJwZkwSeJuQ",
-        Authorization: "Bearer keyQcY7BJrFix6otc", // my
+        Authorization: `Bearer ${environment === 'development' ? 
+                                'keyQcY7BJrFix6otc' : 'keyMZ0LJwZkwSeJuQ'}`, // dev is my
         "Content-Type": "application/json",
         accept: "application/json",
     },
