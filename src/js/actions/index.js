@@ -98,8 +98,8 @@ export const loadDailyPlayers = () => (dispatch, getState) => {
         return Promise.reject(null)
     }
 
-    const filter = `_active=1`;
-    // const filter = `Date=TODAY()`;
+    // const filter = `_active=1`;
+    const filter = `Date=TODAY()`;
     // const filter = `Date=NOW()`;
     // const filter = `Date=SET_TIMEZONE(TODAY(),"${TIME_ZONE}")`;
     // const filter = `Date=DATETIME_FORMAT(SET_TIMEZONE(TODAY(),"${TIME_ZONE}"), "MM/DD/YYYY")`;
