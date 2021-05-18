@@ -130,17 +130,17 @@ const LoginForm = ({ next }) => {
                                animationDelay={0}
                                component={WrappedField}
                                validate={composeValidators(required, match_email)} />
-                        <Field name="instagram"
-                               placeholder="Instagram handle"
-                               animationDelay={100}
-                               component={WrappedField}
-                               validate={composeValidators(match_inst)} />
                         <Field name="phone"
                                placeholder="(999) 999-9999"
                                animationDelay={200}
                                component={WrappedField}
                                validate={composeValidators(required, match_phone)}
                                parse={normalizePhone} />
+                        <Field name="instagram"
+                               placeholder="Instagram handle optional"
+                               animationDelay={100}
+                               component={WrappedField}
+                               validate={composeValidators(match_inst)} />
                     </div>
 
                     <div className="form-btn-wrap center-text">
