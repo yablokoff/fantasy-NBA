@@ -137,7 +137,7 @@ const LoginForm = ({ next }) => {
                                validate={composeValidators(required, match_phone)}
                                parse={normalizePhone} />
                         <Field name="instagram"
-                               placeholder="Instagram handle optional"
+                               placeholder="Instagram (Optional)"
                                animationDelay={100}
                                component={WrappedField}
                                validate={composeValidators(match_inst)} />
