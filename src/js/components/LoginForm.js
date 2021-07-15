@@ -25,7 +25,7 @@ const match_email = value => (
 
 const instRegexp = /^(?!.*\.\.)(?!.*\.$)[^\W][\w.]{0,29}$/igm;
 const match_inst = value => (
-    !value || value.match(instRegexp) ? undefined : "Your name Instagram is incorrect"
+    value.match(instRegexp) ? undefined : "Your name Instagram is incorrect"
 );
 
 const phoneRegexp = /\(?([0-9]{3})\)?([ .-])?([0-9]{3})([ .-])?([0-9]{4})/g;
@@ -137,10 +137,10 @@ const LoginForm = ({ next }) => {
                                validate={composeValidators(required, match_phone)}
                                parse={normalizePhone} />
                         <Field name="instagram"
-                               placeholder="Instagram (Optional)"
+                               placeholder="IG Username"
                                animationDelay={100}
                                component={WrappedField}
-                               validate={composeValidators(match_inst)} />
+                               validate={composeValidators(required, match_inst)} />
                     </div>
 
                     <div className="form-btn-wrap center-text">
