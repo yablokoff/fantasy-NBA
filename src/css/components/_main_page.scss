@@ -1,8 +1,6 @@
-@import "../deps";
-
+@import '../deps';
 
 .cards-wrapper {
-
   .list-item {
     @include media_interval(0, $media-tablet-portrait) {
       @include flex-columns(2, 20px, 20px);
@@ -31,8 +29,7 @@
     &.active-enter {
       .card-image-wrapper {
         filter: grayscale(100%) opacity(100%);
-        transition: filter $appear-animation-duration $animation-func,
-        box-shadow 1s $animation-func;
+        transition: filter $appear-animation-duration $animation-func, box-shadow 1s $animation-func;
         //transform $appear-animation-duration $animation-func;
         //transform: scale(1);
       }
@@ -45,8 +42,7 @@
     &.done-enter {
       .card-image-wrapper {
         filter: grayscale(100%) opacity(100%);
-        transition: filter 1s $animation-func,
-        box-shadow 1s $animation-func;
+        transition: filter 1s $animation-func, box-shadow 1s $animation-func;
         //transform 1.2s $animation-func;
       }
     }
@@ -140,7 +136,6 @@
       margin-bottom: 5px;
     }
     .rule-2 {
-
     }
   }
 
@@ -161,10 +156,11 @@
       &:before {
         height: 0;
         padding-bottom: 0;
-        transition: width .2s ease, height .2s ease; // cant animate padding in safari
+        transition: width 0.2s ease, height 0.2s ease; // cant animate padding in safari
       }
 
-      &:active, &:disabled {
+      &:active,
+      &:disabled {
         &:before {
           width: 180%;
           height: 180%;

@@ -1,5 +1,4 @@
-@import "deps";
-
+@import 'deps';
 
 // reset
 p {
@@ -16,12 +15,17 @@ a {
 
   &:hover {
     text-decoration: none;
-    opacity: .8;
+    opacity: 0.8;
   }
 }
 
+html {
+  // Remove Scrollbar "Jumping"
+  margin-right: calc(100% - 100vw);
+}
 
-html, body {
+html,
+body {
   height: 100%;
 }
 
@@ -82,7 +86,6 @@ img {
   display: flex;
   flex-wrap: wrap;
 }
-
 
 .link {
   color: $purple;
